@@ -1,4 +1,4 @@
-# Lucca Software Expense Management API
+# Wallet System Expense Management API
 
 ## Table of Contents
 - [Introduction](#introduction)
