@@ -6,9 +6,9 @@
 
 namespace WalletSystem.Expenses.Tests
 {
+    using Moq;
     using WalletSystem.Expenses.RulesValidator;
     using WalletSystem.Expenses.Users;
-    using Moq;
 
     public class ExpenseManagerTest
     {

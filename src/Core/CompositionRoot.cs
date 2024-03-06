@@ -6,11 +6,11 @@
 
 namespace WalletSystem
 {
+    using Microsoft.Extensions.DependencyInjection;
     using WalletSystem.Expenses;
     using WalletSystem.Expenses.RulesValidator;
     using WalletSystem.Expenses.RulesValidator.Rules;
     using WalletSystem.Expenses.Users;
-    using Microsoft.Extensions.DependencyInjection;
 
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public static class CompositionRoot
