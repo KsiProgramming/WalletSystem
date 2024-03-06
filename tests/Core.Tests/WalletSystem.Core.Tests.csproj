@@ -28,11 +28,4 @@
     <ProjectReference Include="..\..\src\Core\WalletSystem.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="SonarAnalyzer.CSharp" Version="9.21.0.86780">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
 </Project>
