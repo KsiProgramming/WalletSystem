@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WalletSystem.Sql.Database", "src\Sql.Database\WalletSystem.Sql.Database.sqlproj", "{277F7B1A-767A-4181-AA51-30DFCE7B56ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{6EBE12D8-D7FC-4055-A41E-1FF8542D882A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EBE12D8-D7FC-4055-A41E-1FF8542D882A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EBE12D8-D7FC-4055-A41E-1FF8542D882A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{277F7B1A-767A-4181-AA51-30DFCE7B56ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
