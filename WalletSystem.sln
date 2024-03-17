@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11179B04-04AA-41FB-982E-D95FAD8E813E}"
 	ProjectSection(SolutionItems) = preProject
 		CodeAnalysisRules.ruleset = CodeAnalysisRules.ruleset
+		ci-pipeline.yml = ci-pipeline.yml
 		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 		stylecop.json = stylecop.json
