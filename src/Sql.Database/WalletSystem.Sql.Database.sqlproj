@@ -61,5 +61,6 @@
   <ItemGroup>
     <Build Include="Tables\Currency.sql" />
     <Build Include="Tables\ExpenseType.sql" />
+    <Build Include="Tables\User.sql" />
   </ItemGroup>
 </Project>
