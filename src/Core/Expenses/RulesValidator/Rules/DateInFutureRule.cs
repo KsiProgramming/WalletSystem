@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace WalletSystem.Expenses.RulesValidator.Rules
 {
     public class DateInFutureRule : IExpenseRuleCheck<ExpenseValidationRequest>
@@ -19,7 +21,8 @@ namespace WalletSystem.Expenses.RulesValidator.Rules
         {
             if (request.IsDateInFuture(this.systemClock.UtcNow.Date))
             {
-                throw new ExpenseDateInFutureException($"Expense creation failed: The expense date cannot be in the future. Please provide a valid date. '{request.Date}'");
+                var date = Convert.ToString(request.Date, CultureInfo.CreateSpecificCulture("fr-FR"));
+                throw new ExpenseDateInFutureException($"Expense creation failed: The expense date cannot be in the future. Please provide a valid date. '{date}'");
             }
         }
     }
