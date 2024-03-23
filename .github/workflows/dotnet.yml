@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --no-restore /home/runner/work/WalletSystem/WalletSystem/src/Sql.Database/WalletSystem.Sql.Database.sqlproj
     - name: Test
       run: dotnet test --no-build --verbosity normal
