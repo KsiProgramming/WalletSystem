@@ -4,10 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Globalization;
-
 namespace WalletSystem.Expenses.RulesValidator.Rules
 {
+    using System.Globalization;
+
     public class DateInFutureRule : IExpenseRuleCheck<ExpenseValidationRequest>
     {
         private readonly ISystemClock systemClock;
