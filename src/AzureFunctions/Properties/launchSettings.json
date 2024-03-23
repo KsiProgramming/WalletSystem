@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "AzureFunctions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7159",
+      "launchBrowser": true,
+      "launchUrl": "api",
+      "environmentVariables": {
+        "WalletSystem_SQL_CONNECTIONSTRING": "Server=(LocalDB)\\MSSQLLocalDB;Database=WalletSystemDB;Trusted_Connection=True"
+      }
+    }
+  }
+}
