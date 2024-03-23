@@ -22,7 +22,5 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore --no-restore $(find . -name "*.csproj" ! -path "/home/runner/work/WalletSystem/WalletSystem/src/Sql.Database/WalletSystem.Sql.Database.csproj")
     - name: Test
       run: dotnet test --no-build --verbosity normal
