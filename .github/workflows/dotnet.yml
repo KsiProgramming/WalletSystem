@@ -19,7 +19,7 @@ jobs:
         projectBaseDir: .
         args: >
           -Dsonar.organization=ksiprogramming
-          -Dsonar.projectKey=walletsystem
+          -Dsonar.projectKey=KsiProgramming_WalletSystem
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
