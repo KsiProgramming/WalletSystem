@@ -1,7 +1,4 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: .NET with SonarCloud
 
 on:
   push:
@@ -28,4 +25,13 @@ jobs:
       - name: Test
         run: |
           find . -type f -name "*.csproj" ! -path "*/Sql.Database/WalletSystem.Sql.Database.sqlproj" | xargs -I{} dotnet test --no-build --verbosity normal "{}"
-
+      - name: SonarCloud Analysis
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet sonarscanner begin /k:"KsiProgramming_WalletSystem" /o:"ksiprogramming" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet build
+          dotnet test
+          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
