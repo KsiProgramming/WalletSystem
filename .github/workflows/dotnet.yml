@@ -43,17 +43,18 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarScanner tool
+      - name: Install SonarQube Scan Action
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        run: |
-          choco install dotnet-sonarscanner -y  # Install the latest version of SonarScanner tool using Chocolatey
-      - name: SonarCloud Analysis
+        uses: SonarSource/sonarqube-scan-action@v2.0.2
+        with:
+          args: >
+            -Dsonar.projectKey=KsiProgrammingWalletSystem
+            -Dsonar.organization=ksiprogramming
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Run SonarQube Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           choco install openjdk --version 17.0.0.1 -y  # Install OpenJDK 17 using Chocolatey
-          dotnet-sonarscanner begin /k:"KsiProgrammingWalletSystem" /o:"ksiprogramming" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-          Get-ChildItem -Path . -Filter *.csproj -Exclude Sql.Database/WalletSystem.Sql.Database.sqlproj -Recurse | ForEach-Object { dotnet build $_.FullName }
-          Get-ChildItem -Path . -Filter *.csproj -Exclude Sql.Database/WalletSystem.Sql.Database.sqlproj -Recurse | ForEach-Object { dotnet test $_.FullName --no-build --verbosity normal }
-          dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
