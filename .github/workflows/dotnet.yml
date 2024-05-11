@@ -59,3 +59,4 @@ jobs:
           find . -type f -name "*.csproj" ! -path "*/Sql.Database/WalletSystem.Sql.Database.sqlproj" | xargs -I{} dotnet build "{}"
           find . -type f -name "*.csproj" ! -path "*/Sql.Database/WalletSystem.Sql.Database.sqlproj" | xargs -I{} dotnet test --no-build --verbosity normal "{}"
           dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
