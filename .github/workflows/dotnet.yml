@@ -46,7 +46,7 @@ jobs:
       - name: Install SonarScanner tool
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         run: |
-          choco install dotnet-sonarscanner --version=5.2.2 -y  # Install SonarScanner tool using Chocolatey
+          choco install dotnet-sonarscanner -y  # Install the latest version of SonarScanner tool using Chocolatey
       - name: SonarCloud Analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
