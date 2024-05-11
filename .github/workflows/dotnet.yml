@@ -44,5 +44,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"KsiProgramming_WalletSystem" /o:"ksiprogramming" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build
+          find . -type f -name "*.csproj" ! -path "*/Sql.Database/WalletSystem.Sql.Database.sqlproj" | xargs -I{} dotnet build --no-restore "{}"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
