@@ -28,4 +28,3 @@ jobs:
       - name: Test
         run: |
           find . -type f -name "*.csproj" ! -path "*/Sql.Database/WalletSystem.Sql.Database.sqlproj" | xargs -I{} dotnet test --no-build --verbosity normal "{}"
-
