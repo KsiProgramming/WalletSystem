@@ -140,7 +140,7 @@ namespace WalletSystem.AzureFunctions
                     }
                     else
                     {
-                        message = "An internal error has occurred. Please contact the support of the Active Assurances for more informations.";
+                        message = "An internal error has occurred. Please contact the support of the Wallet system for more informations.";
                     }
 
                     problemDetails = new ProblemDetails()
