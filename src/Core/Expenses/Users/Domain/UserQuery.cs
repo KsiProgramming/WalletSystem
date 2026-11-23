@@ -13,5 +13,7 @@ namespace WalletSystem.Expenses.Users
         }
 
         public int? Id { get; set; }
+
+        public string? Name { get; set; }
     }
 }

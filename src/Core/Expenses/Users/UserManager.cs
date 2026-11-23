@@ -30,5 +30,15 @@ namespace WalletSystem.Expenses.Users
 
             return users.Single();
         }
+
+        public async Task<IReadOnlyCollection<User>> FindByNameAsync(string name)
+        {
+            var query = new UserQuery()
+            {
+                Name = name,
+            };
+
+            return await this.repository.FindAsync(query);
+        }
     }
 }

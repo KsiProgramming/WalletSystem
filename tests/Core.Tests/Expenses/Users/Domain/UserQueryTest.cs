@@ -14,6 +14,7 @@ namespace WalletSystem.Expenses.Users.Tests
             var query = new UserQuery();
 
             query.Id.Should().BeNull();
+            query.Name.Should().BeNull();
         }
 
         [Fact]
@@ -23,6 +24,15 @@ namespace WalletSystem.Expenses.Users.Tests
             query.Id = 1;
 
             query.Id.Should().Be(1);
+        }
+
+        [Fact]
+        public void Name_ValueChanged()
+        {
+            var query = new UserQuery();
+            query.Name = "John";
+
+            query.Name.Should().Be("John");
         }
     }
 }

@@ -29,6 +29,11 @@ namespace WalletSystem.Expenses.Users.Sql
                 users = users.Where(u => u.Id == query.Id);
             }
 
+            if (!string.IsNullOrWhiteSpace(query.Name))
+            {
+                users = users.Where(u => u.FirstName.Contains(query.Name) || u.LastName.Contains(query.Name));
+            }
+
             var result = await users.ToArrayAsync();
 
             return result
