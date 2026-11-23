@@ -58,5 +58,64 @@ namespace WalletSystem.Expenses.Users.Tests
 
             repository.VerifyAll();
         }
+
+        [Fact]
+        public async Task FindByNameAsync()
+        {
+            var users = new User[2]
+            {
+                new User("John", "Doe", Currency.USD, 1),
+                new User("Mary", "Johnson", Currency.RUB, 2),
+            };
+
+            UserQuery? capturedQuery = null;
+            var repository = new Mock<IUserRepository>(MockBehavior.Strict);
+            repository
+                .Setup(r => r.FindAsync(It.IsAny<UserQuery>()))
+                .Callback((UserQuery query) =>
+                {
+                    capturedQuery = query;
+                })
+                .ReturnsAsync(users);
+
+            var manager = new UserManager(repository.Object);
+
+            var result = await manager.FindByNameAsync("john");
+
+            capturedQuery.Should().NotBeNull();
+            capturedQuery!.Name.Should().Be("john");
+            capturedQuery.Id.Should().BeNull();
+            result.Should().HaveCount(2);
+            result.Select(u => u.Id).Should().Equal(1, 2);
+            result.Select(u => u.FirstName).Should().Equal("John", "Mary");
+
+            repository.VerifyAll();
+        }
+
+        [Fact]
+        public async Task FindByNameAsync_NoMatch()
+        {
+            var users = Array.Empty<User>();
+
+            UserQuery? capturedQuery = null;
+            var repository = new Mock<IUserRepository>(MockBehavior.Strict);
+            repository
+                .Setup(r => r.FindAsync(It.IsAny<UserQuery>()))
+                .Callback((UserQuery query) =>
+                {
+                    capturedQuery = query;
+                })
+                .ReturnsAsync(users);
+
+            var manager = new UserManager(repository.Object);
+
+            var result = await manager.FindByNameAsync("unknown");
+
+            capturedQuery.Should().NotBeNull();
+            capturedQuery!.Name.Should().Be("unknown");
+            result.Should().BeEmpty();
+
+            repository.VerifyAll();
+        }
     }
 }

@@ -2,8 +2,8 @@
 info:
   title: "Wallet System"
   description: |
-    This API provides endpoints for managing expenses within the Wallet System platform. 
-    It allows users to create, retrieve expense records.
+    This API provides endpoints for managing expenses and searching users within the Wallet System platform. 
+    It allows users to create, retrieve expense records and to search users by name.
   version: "1.0.0"
 tags:
   - name: Expenses
@@ -11,6 +11,8 @@ tags:
     externalDocs:
       description: Learn more about Expenses
       url: http://dummywebsite.io/docs/expenses
+  - name: Users
+    description: Endpoints related to users within the platform.
 servers:
  - url: './'
 paths:
@@ -106,6 +108,31 @@ paths:
                  type: array
                  items:
                    $ref: "#/components/schemas/SearchExpenseResponseResult"
+  /Users/search:
+    get:
+      summary: Search users by name
+      description: Retrieves the list of users whose first name or last name matches the provided name.
+      tags:
+        - Users
+      operationId: searchUsers
+      parameters:
+        - name: name
+          in: query
+          description: The name (or part of the first name or last name) of the users to search for.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation. The list is empty when no user matches.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/SearchUserResponseResult"
+        '400':
+          description: The 'name' query parameter is missing or blank.
 
 components:
   schemas:
@@ -195,3 +222,19 @@ components:
         userFullName:
           type: string
           description: Full name of the user who incurred the expense
+    SearchUserResponseResult:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The identifier of the user
+        firstName:
+          type: string
+          description: First name of the user
+        lastName:
+          type: string
+          description: Last name of the user
+        currency:
+          type: string
+          description: The currency of the user
+          example: USD
