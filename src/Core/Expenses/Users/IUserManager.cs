@@ -9,5 +9,7 @@ namespace WalletSystem.Expenses.Users
     public interface IUserManager
     {
         Task<User> FindByIdAsync(int id);
+
+        Task<IReadOnlyCollection<User>> FindByNameAsync(string name);
     }
 }
